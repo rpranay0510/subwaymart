@@ -1,0 +1,60 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %} {{ page_title }} {% endblock %}
+
+{% block navbar %}
+<nav class="navbar navbar-default" style="background-color: #2b1374; border-color: #5cb85c;">
+  <div class="container-fluid">
+    
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="{{ url_for("home") }}" style="color: white;">Subway Mart</a> 
+    </div>
+
+    
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="{{ url_for("products") }}" style="color: white;">Products </a></li>
+        <li><a href="{{ url_for("locations") }}" style="color: white;">Locations </a></li>
+        <li><a href="{{ url_for("movements") }}" style="color: white;">Movements </a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+{% endblock %}
+
+
+{% block content %}
+    {% block popups %}
+      <div class="container">
+        {%  for category, message in get_flashed_messages(with_categories=true) %}
+                  <div class="alert alert-{{ category }}">
+                  <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    {{ message }}
+                  </div>
+        {% endfor %} 
+      </div>
+    {% endblock %}
+      <div class="container">
+        <h1 style="text-align: center"><b>Welcome To Subway Mart!!</b></h1> 
+        <span style="display:inline-block; height: 70px"></span>
+        <div style="text-align: center">
+         <h4>A self-service shop offering a wide variety of food,
+          household products, organized into sections.</h4>
+        </div>
+      </div>
+    {% block footer %}
+      <footer class="page-footer font-small blue navbar-default navbar-fixed-bottom">
+      
+      </div>
+      </footer>
+
+    {% endblock %}
+
+{% endblock %}
+
